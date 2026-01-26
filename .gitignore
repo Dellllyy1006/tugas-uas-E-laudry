@@ -1,0 +1,8 @@
+vendor/
+.env
+.DS_Store
+*.log
+.vscode/
+.idea/
+tmp/
+fix_password.php
