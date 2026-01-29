@@ -134,7 +134,7 @@
                 
                 <!-- Search Again -->
                 <div class="text-center mt-4">
-                    <a href="<?= BASE_URL ?>/tracking" class="btn btn-outline-secondary">
+                    <a href="<?= BASE_URL ?>/index.php?url=tracking" class="btn btn-outline-secondary">
                         <i class="fas fa-search me-2"></i> Lacak Laundry Lain
                     </a>
                 </div>

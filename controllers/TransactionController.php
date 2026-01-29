@@ -56,7 +56,7 @@ class TransactionController extends Controller
     public function store(): void
     {
         if (!$this->isPost()) {
-            $this->redirect('/transaction');
+            $this->redirect('/index.php?url=transaction');
         }
         
         $customerId = (int) $this->post('customer_id', 0);
@@ -71,7 +71,7 @@ class TransactionController extends Controller
             
             if (empty($customerName) || empty($customerPhone)) {
                 Session::flash('error', 'Nama dan telepon pelanggan harus diisi');
-                $this->redirect('/transaction/create');
+                $this->redirect('/index.php?url=transaction/create');
             }
             
             $customerId = Customer::create([
@@ -87,7 +87,7 @@ class TransactionController extends Controller
         
         if (empty($packageIds) || !is_array($packageIds)) {
             Session::flash('error', 'Minimal pilih satu paket layanan');
-            $this->redirect('/transaction/create');
+            $this->redirect('/index.php?url=transaction/create');
         }
         
         // Start transaction
@@ -153,12 +153,12 @@ class TransactionController extends Controller
             Database::commit();
             
             Session::flash('success', 'Transaksi berhasil dibuat');
-            $this->redirect('/transaction/show/' . $transactionId);
+            $this->redirect('/index.php?url=transaction/show/' . $transactionId);
             
         } catch (Exception $e) {
             Database::rollback();
             Session::flash('error', 'Gagal membuat transaksi: ' . $e->getMessage());
-            $this->redirect('/transaction/create');
+            $this->redirect('/index.php?url=transaction/create');
         }
     }
     
@@ -170,7 +170,7 @@ class TransactionController extends Controller
         $transaction = Transaction::find($id);
         if (!$transaction) {
             Session::flash('error', 'Transaksi tidak ditemukan');
-            $this->redirect('/transaction');
+            $this->redirect('/index.php?url=transaction');
         }
         
         $items = Transaction::getItems($id);
@@ -193,7 +193,7 @@ class TransactionController extends Controller
         $transaction = Transaction::find($id);
         if (!$transaction) {
             Session::flash('error', 'Transaksi tidak ditemukan');
-            $this->redirect('/transaction');
+            $this->redirect('/index.php?url=transaction');
         }
         
         $items = Transaction::getItems($id);
@@ -211,25 +211,25 @@ class TransactionController extends Controller
     public function status(int $id): void
     {
         if (!$this->isPost()) {
-            $this->redirect('/transaction/show/' . $id);
+            $this->redirect('/index.php?url=transaction/show/' . $id);
         }
         
         $transaction = Transaction::find($id);
         if (!$transaction) {
             Session::flash('error', 'Transaksi tidak ditemukan');
-            $this->redirect('/transaction');
+            $this->redirect('/index.php?url=transaction');
         }
         
         $newStatus = $this->post('status', '');
         
         if (!array_key_exists($newStatus, Transaction::STATUSES)) {
             Session::flash('error', 'Status tidak valid');
-            $this->redirect('/transaction/show/' . $id);
+            $this->redirect('/index.php?url=transaction/show/' . $id);
         }
         
         Transaction::updateStatus($id, $newStatus);
         Session::flash('success', 'Status berhasil diubah');
-        $this->redirect('/transaction/show/' . $id);
+        $this->redirect('/index.php?url=transaction/show/' . $id);
     }
     
     /**
@@ -243,7 +243,7 @@ class TransactionController extends Controller
                 $this->json(['success' => false, 'message' => 'Transaksi tidak ditemukan']);
             }
             Session::flash('error', 'Transaksi tidak ditemukan');
-            $this->redirect('/transaction');
+            $this->redirect('/index.php?url=transaction');
         }
         
         $result = Transaction::nextStatus($id);
@@ -264,7 +264,7 @@ class TransactionController extends Controller
             Session::flash('error', 'Status tidak dapat diubah');
         }
         
-        $this->redirect('/transaction/show/' . $id);
+        $this->redirect('/index.php?url=transaction/show/' . $id);
     }
     
     /**
@@ -275,11 +275,11 @@ class TransactionController extends Controller
         $transaction = Transaction::find($id);
         if (!$transaction) {
             Session::flash('error', 'Transaksi tidak ditemukan');
-            $this->redirect('/transaction');
+            $this->redirect('/index.php?url=transaction');
         }
         
         Transaction::delete($id);
         Session::flash('success', 'Transaksi berhasil dihapus');
-        $this->redirect('/transaction');
+        $this->redirect('/index.php?url=transaction');
     }
 }

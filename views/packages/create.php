@@ -4,7 +4,7 @@
             <div class="card-header">
                 <h3 class="card-title">Tambah Paket Laundry</h3>
             </div>
-            <form action="<?= BASE_URL ?>/package/store" method="post">
+            <form action="<?= BASE_URL ?>/index.php?url=package/store" method="post">
                 <input type="hidden" name="csrf_token" value="<?= $csrf_token ?>">
                 
                 <div class="card-body">
@@ -48,7 +48,7 @@
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-save mr-1"></i> Simpan
                     </button>
-                    <a href="<?= BASE_URL ?>/package" class="btn btn-secondary">
+                    <a href="<?= BASE_URL ?>/index.php?url=package" class="btn btn-secondary">
                         <i class="fas fa-arrow-left mr-1"></i> Kembali
                     </a>
                 </div>

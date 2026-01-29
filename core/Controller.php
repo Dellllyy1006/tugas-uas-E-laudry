@@ -109,7 +109,7 @@ class Controller
     {
         if (!Session::isLoggedIn()) {
             Session::flash('error', 'Silakan login terlebih dahulu');
-            $this->redirect('/auth/login');
+            $this->redirect('/index.php?url=auth/login');
         }
     }
     
@@ -121,7 +121,7 @@ class Controller
         $this->requireLogin();
         if (!Session::isAdmin()) {
             Session::flash('error', 'Anda tidak memiliki akses ke halaman ini');
-            $this->redirect('/dashboard');
+            $this->redirect('/index.php?url=dashboard');
         }
     }
     

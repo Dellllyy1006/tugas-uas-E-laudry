@@ -9,7 +9,7 @@
             <div class="icon">
                 <i class="fas fa-receipt"></i>
             </div>
-            <a href="<?= BASE_URL ?>/transaction" class="small-box-footer">
+            <a href="<?= BASE_URL ?>/index.php?url=transaction" class="small-box-footer">
                 Lihat detail <i class="fas fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -24,7 +24,7 @@
             <div class="icon">
                 <i class="fas fa-clock"></i>
             </div>
-            <a href="<?= BASE_URL ?>/transaction?status=baru" class="small-box-footer">
+            <a href="<?= BASE_URL ?>/index.php?url=transaction&status=baru" class="small-box-footer">
                 Lihat detail <i class="fas fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -39,7 +39,7 @@
             <div class="icon">
                 <i class="fas fa-box"></i>
             </div>
-            <a href="<?= BASE_URL ?>/transaction?status=siap_ambil" class="small-box-footer">
+            <a href="<?= BASE_URL ?>/index.php?url=transaction&status=siap_ambil" class="small-box-footer">
                 Lihat detail <i class="fas fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -97,7 +97,7 @@
                     Transaksi Terbaru
                 </h3>
                 <div class="card-tools">
-                    <a href="<?= BASE_URL ?>/transaction" class="btn btn-sm btn-primary">
+                    <a href="<?= BASE_URL ?>/index.php?url=transaction" class="btn btn-sm btn-primary">
                         Lihat Semua
                     </a>
                 </div>
@@ -140,7 +140,7 @@
                                 </span>
                             </td>
                             <td>
-                                <a href="<?= BASE_URL ?>/transaction/show/<?= $trx['id'] ?>" class="btn btn-sm btn-info">
+                                <a href="<?= BASE_URL ?>/index.php?url=transaction/show/<?= $trx['id'] ?>" class="btn btn-sm btn-info">
                                     <i class="fas fa-eye"></i>
                                 </a>
                             </td>
@@ -163,15 +163,15 @@
                 </h3>
             </div>
             <div class="card-body">
-                <a href="<?= BASE_URL ?>/transaction/create" class="btn btn-primary btn-block mb-3">
+                <a href="<?= BASE_URL ?>/index.php?url=transaction/create" class="btn btn-primary btn-block mb-3">
                     <i class="fas fa-plus-circle mr-2"></i>
                     Transaksi Baru
                 </a>
-                <a href="<?= BASE_URL ?>/customer/create" class="btn btn-outline-secondary btn-block mb-3">
+                <a href="<?= BASE_URL ?>/index.php?url=customer/create" class="btn btn-outline-secondary btn-block mb-3">
                     <i class="fas fa-user-plus mr-2"></i>
                     Tambah Pelanggan
                 </a>
-                <a href="<?= BASE_URL ?>/tracking" target="_blank" class="btn btn-outline-info btn-block">
+                <a href="<?= BASE_URL ?>/index.php?url=tracking" target="_blank" class="btn btn-outline-info btn-block">
                     <i class="fas fa-search mr-2"></i>
                     Lacak Laundry
                 </a>
@@ -204,7 +204,7 @@
                                 <br>
                                 <small><?= htmlspecialchars($trx['customer_name']) ?></small>
                             </div>
-                            <a href="<?= BASE_URL ?>/transaction/show/<?= $trx['id'] ?>" class="btn btn-sm btn-success">
+                            <a href="<?= BASE_URL ?>/index.php?url=transaction/show/<?= $trx['id'] ?>" class="btn btn-sm btn-success">
                                 <i class="fas fa-check"></i>
                             </a>
                         </div>

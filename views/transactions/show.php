@@ -41,7 +41,7 @@
                 
                 <?php if ($transaction['status'] !== 'selesai'): ?>
                 <div class="text-center mt-4">
-                    <form action="<?= BASE_URL ?>/transaction/next/<?= $transaction['id'] ?>" method="post" style="display: inline;">
+                    <form action="<?= BASE_URL ?>/index.php?url=transaction/next/<?= $transaction['id'] ?>" method="post" style="display: inline;">
                         <button type="submit" class="btn btn-success btn-lg">
                             <i class="fas fa-arrow-right mr-2"></i>
                             Lanjutkan ke "<?= Transaction::getStatusLabel($statuses[$transaction['status']]['next']) ?>"
@@ -196,17 +196,17 @@
                 </h3>
             </div>
             <div class="card-body">
-                <a href="<?= BASE_URL ?>/transaction/print/<?= $transaction['id'] ?>" class="btn btn-primary btn-block mb-2" target="_blank">
+                <a href="<?= BASE_URL ?>/index.php?url=transaction/print/<?= $transaction['id'] ?>" class="btn btn-primary btn-block mb-2" target="_blank">
                     <i class="fas fa-print mr-2"></i> Cetak Nota
                 </a>
                 
-                <a href="<?= BASE_URL ?>/transaction" class="btn btn-secondary btn-block mb-2">
+                <a href="<?= BASE_URL ?>/index.php?url=transaction" class="btn btn-secondary btn-block mb-2">
                     <i class="fas fa-arrow-left mr-2"></i> Kembali
                 </a>
                 
                 <?php if ($transaction['status'] === 'baru'): ?>
                 <hr>
-                <a href="<?= BASE_URL ?>/transaction/delete/<?= $transaction['id'] ?>" class="btn btn-outline-danger btn-block btn-delete">
+                <a href="<?= BASE_URL ?>/index.php?url=transaction/delete/<?= $transaction['id'] ?>" class="btn btn-outline-danger btn-block btn-delete">
                     <i class="fas fa-trash mr-2"></i> Hapus Transaksi
                 </a>
                 <?php endif; ?>
@@ -223,7 +223,7 @@
                 </h3>
             </div>
             <div class="card-body">
-                <form action="<?= BASE_URL ?>/transaction/status/<?= $transaction['id'] ?>" method="post">
+                <form action="<?= BASE_URL ?>/index.php?url=transaction/status/<?= $transaction['id'] ?>" method="post">
                     <div class="form-group">
                         <select class="form-control" name="status">
                             <?php foreach ($statuses as $status => $config): ?>

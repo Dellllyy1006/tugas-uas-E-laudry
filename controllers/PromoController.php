@@ -45,7 +45,7 @@ class PromoController extends Controller
     public function store(): void
     {
         if (!$this->isPost()) {
-            $this->redirect('/promo');
+            $this->redirect('/index.php?url=promo');
         }
         
         $data = [
@@ -62,17 +62,17 @@ class PromoController extends Controller
         
         if (empty($data['code']) || empty($data['name']) || $data['discount_value'] <= 0) {
             Session::flash('error', 'Kode, nama, dan nilai diskon harus diisi dengan benar');
-            $this->redirect('/promo/create');
+            $this->redirect('/index.php?url=promo/create');
         }
         
         if (Promo::codeExists($data['code'])) {
             Session::flash('error', 'Kode promo sudah digunakan');
-            $this->redirect('/promo/create');
+            $this->redirect('/index.php?url=promo/create');
         }
         
         Promo::create($data);
         Session::flash('success', 'Promo berhasil ditambahkan');
-        $this->redirect('/promo');
+        $this->redirect('/index.php?url=promo');
     }
     
     /**
@@ -83,7 +83,7 @@ class PromoController extends Controller
         $promo = Promo::find($id);
         if (!$promo) {
             Session::flash('error', 'Promo tidak ditemukan');
-            $this->redirect('/promo');
+            $this->redirect('/index.php?url=promo');
         }
         
         $this->setTitle('Edit Promo');
@@ -101,13 +101,13 @@ class PromoController extends Controller
     public function update(int $id): void
     {
         if (!$this->isPost()) {
-            $this->redirect('/promo');
+            $this->redirect('/index.php?url=promo');
         }
         
         $promo = Promo::find($id);
         if (!$promo) {
             Session::flash('error', 'Promo tidak ditemukan');
-            $this->redirect('/promo');
+            $this->redirect('/index.php?url=promo');
         }
         
         $data = [
@@ -124,17 +124,17 @@ class PromoController extends Controller
         
         if (empty($data['code']) || empty($data['name']) || $data['discount_value'] <= 0) {
             Session::flash('error', 'Kode, nama, dan nilai diskon harus diisi dengan benar');
-            $this->redirect('/promo/edit/' . $id);
+            $this->redirect('/index.php?url=promo/edit/' . $id);
         }
         
         if (Promo::codeExists($data['code'], $id)) {
             Session::flash('error', 'Kode promo sudah digunakan');
-            $this->redirect('/promo/edit/' . $id);
+            $this->redirect('/index.php?url=promo/edit/' . $id);
         }
         
         Promo::update($id, $data);
         Session::flash('success', 'Promo berhasil diupdate');
-        $this->redirect('/promo');
+        $this->redirect('/index.php?url=promo');
     }
     
     /**
@@ -145,12 +145,12 @@ class PromoController extends Controller
         $promo = Promo::find($id);
         if (!$promo) {
             Session::flash('error', 'Promo tidak ditemukan');
-            $this->redirect('/promo');
+            $this->redirect('/index.php?url=promo');
         }
         
         Promo::delete($id);
         Session::flash('success', 'Promo berhasil dihapus');
-        $this->redirect('/promo');
+        $this->redirect('/index.php?url=promo');
     }
     
     /**
@@ -164,7 +164,7 @@ class PromoController extends Controller
                 $this->json(['success' => false, 'message' => 'Promo tidak ditemukan']);
             }
             Session::flash('error', 'Promo tidak ditemukan');
-            $this->redirect('/promo');
+            $this->redirect('/index.php?url=promo');
         }
         
         Promo::toggleActive($id);
@@ -174,7 +174,7 @@ class PromoController extends Controller
         }
         
         Session::flash('success', 'Status promo berhasil diubah');
-        $this->redirect('/promo');
+        $this->redirect('/index.php?url=promo');
     }
     
     /**

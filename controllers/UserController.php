@@ -45,7 +45,7 @@ class UserController extends Controller
     public function store(): void
     {
         if (!$this->isPost()) {
-            $this->redirect('/user');
+            $this->redirect('/index.php?url=user');
         }
         
         $data = [
@@ -58,17 +58,17 @@ class UserController extends Controller
         
         if (empty($data['username']) || empty($data['password']) || empty($data['name'])) {
             Session::flash('error', 'Username, password, dan nama harus diisi');
-            $this->redirect('/user/create');
+            $this->redirect('/index.php?url=user/create');
         }
         
         if (User::usernameExists($data['username'])) {
             Session::flash('error', 'Username sudah digunakan');
-            $this->redirect('/user/create');
+            $this->redirect('/index.php?url=user/create');
         }
         
         User::create($data);
         Session::flash('success', 'User berhasil ditambahkan');
-        $this->redirect('/user');
+        $this->redirect('/index.php?url=user');
     }
     
     /**
@@ -79,7 +79,7 @@ class UserController extends Controller
         $user = User::find($id);
         if (!$user) {
             Session::flash('error', 'User tidak ditemukan');
-            $this->redirect('/user');
+            $this->redirect('/index.php?url=user');
         }
         
         $this->setTitle('Edit User');
@@ -97,13 +97,13 @@ class UserController extends Controller
     public function update(int $id): void
     {
         if (!$this->isPost()) {
-            $this->redirect('/user');
+            $this->redirect('/index.php?url=user');
         }
         
         $user = User::find($id);
         if (!$user) {
             Session::flash('error', 'User tidak ditemukan');
-            $this->redirect('/user');
+            $this->redirect('/index.php?url=user');
         }
         
         $data = [
@@ -120,17 +120,17 @@ class UserController extends Controller
         
         if (empty($data['username']) || empty($data['name'])) {
             Session::flash('error', 'Username dan nama harus diisi');
-            $this->redirect('/user/edit/' . $id);
+            $this->redirect('/index.php?url=user/edit/' . $id);
         }
         
         if (User::usernameExists($data['username'], $id)) {
             Session::flash('error', 'Username sudah digunakan');
-            $this->redirect('/user/edit/' . $id);
+            $this->redirect('/index.php?url=user/edit/' . $id);
         }
         
         User::update($id, $data);
         Session::flash('success', 'User berhasil diupdate');
-        $this->redirect('/user');
+        $this->redirect('/index.php?url=user');
     }
     
     /**
@@ -141,16 +141,16 @@ class UserController extends Controller
         $user = User::find($id);
         if (!$user) {
             Session::flash('error', 'User tidak ditemukan');
-            $this->redirect('/user');
+            $this->redirect('/index.php?url=user');
         }
         
         if ($user['id'] === Session::userId()) {
             Session::flash('error', 'Anda tidak dapat menghapus akun sendiri');
-            $this->redirect('/user');
+            $this->redirect('/index.php?url=user');
         }
         
         User::delete($id);
         Session::flash('success', 'User berhasil dihapus');
-        $this->redirect('/user');
+        $this->redirect('/index.php?url=user');
     }
 }

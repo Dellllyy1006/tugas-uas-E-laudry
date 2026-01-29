@@ -14,7 +14,15 @@ ini_set('display_errors', '1');
 
 // Define base path
 define('BASE_PATH', __DIR__);
-define('BASE_URL', '/uas_kel7_database');
+
+// Helper to detect base url
+$scriptName = str_replace('\\', '/', $_SERVER['SCRIPT_NAME']);
+$dirName = dirname($scriptName);
+if ($dirName === '/' || $dirName === '.') {
+    $dirName = '';
+}
+$dirName = rtrim($dirName, '/');
+define('BASE_URL', $dirName);
 
 // Autoloader
 spl_autoload_register(function ($class) {

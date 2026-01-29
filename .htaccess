@@ -1,9 +1,11 @@
-RewriteEngine On
-
-# Redirect to index.php if not a real file or directory
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+Options +FollowSymLinks -MultiViews
+# Disable rewrite rules for Safe Mode compatibility
+# RewriteEngine On
+# RewriteBase /
+# RewriteRule ^index\.php$ - [L]
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule . index.php [L]
 
 # Security - prevent directory listing
 Options -Indexes

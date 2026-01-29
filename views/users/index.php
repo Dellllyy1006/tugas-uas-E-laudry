@@ -2,7 +2,7 @@
     <div class="card-header">
         <h3 class="card-title">Daftar User</h3>
         <div class="card-tools">
-            <a href="<?= BASE_URL ?>/user/create" class="btn btn-primary btn-sm">
+            <a href="<?= BASE_URL ?>/index.php?url=user/create" class="btn btn-primary btn-sm">
                 <i class="fas fa-plus mr-1"></i> Tambah User
             </a>
         </div>
@@ -46,10 +46,10 @@
                     </td>
                     <td><?= date('d/m/Y', strtotime($user['created_at'])) ?></td>
                     <td>
-                        <a href="<?= BASE_URL ?>/user/edit/<?= $user['id'] ?>" class="btn btn-sm btn-warning" title="Edit">
+                        <a href="<?= BASE_URL ?>/index.php?url=user/edit/<?= $user['id'] ?>" class="btn btn-sm btn-warning" title="Edit">
                             <i class="fas fa-edit"></i>
                         </a>
-                        <a href="<?= BASE_URL ?>/user/delete/<?= $user['id'] ?>" class="btn btn-sm btn-danger btn-delete" title="Hapus">
+                        <a href="<?= BASE_URL ?>/index.php?url=user/delete/<?= $user['id'] ?>" class="btn btn-sm btn-danger btn-delete" title="Hapus">
                             <i class="fas fa-trash"></i>
                         </a>
                     </td>

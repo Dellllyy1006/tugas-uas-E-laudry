@@ -45,7 +45,7 @@ class CustomerController extends Controller
     public function store(): void
     {
         if (!$this->isPost()) {
-            $this->redirect('/customer');
+            $this->redirect('/index.php?url=customer');
         }
         
         $data = [
@@ -56,12 +56,12 @@ class CustomerController extends Controller
         
         if (empty($data['name']) || empty($data['phone'])) {
             Session::flash('error', 'Nama dan nomor telepon harus diisi');
-            $this->redirect('/customer/create');
+            $this->redirect('/index.php?url=customer/create');
         }
         
         Customer::create($data);
         Session::flash('success', 'Pelanggan berhasil ditambahkan');
-        $this->redirect('/customer');
+        $this->redirect('/index.php?url=customer');
     }
     
     /**
@@ -72,7 +72,7 @@ class CustomerController extends Controller
         $customer = Customer::find($id);
         if (!$customer) {
             Session::flash('error', 'Pelanggan tidak ditemukan');
-            $this->redirect('/customer');
+            $this->redirect('/index.php?url=customer');
         }
         
         $this->setTitle('Edit Pelanggan');
@@ -90,13 +90,13 @@ class CustomerController extends Controller
     public function update(int $id): void
     {
         if (!$this->isPost()) {
-            $this->redirect('/customer');
+            $this->redirect('/index.php?url=customer');
         }
         
         $customer = Customer::find($id);
         if (!$customer) {
             Session::flash('error', 'Pelanggan tidak ditemukan');
-            $this->redirect('/customer');
+            $this->redirect('/index.php?url=customer');
         }
         
         $data = [
@@ -107,12 +107,12 @@ class CustomerController extends Controller
         
         if (empty($data['name']) || empty($data['phone'])) {
             Session::flash('error', 'Nama dan nomor telepon harus diisi');
-            $this->redirect('/customer/edit/' . $id);
+            $this->redirect('/index.php?url=customer/edit/' . $id);
         }
         
         Customer::update($id, $data);
         Session::flash('success', 'Pelanggan berhasil diupdate');
-        $this->redirect('/customer');
+        $this->redirect('/index.php?url=customer');
     }
     
     /**
@@ -123,17 +123,17 @@ class CustomerController extends Controller
         $customer = Customer::find($id);
         if (!$customer) {
             Session::flash('error', 'Pelanggan tidak ditemukan');
-            $this->redirect('/customer');
+            $this->redirect('/index.php?url=customer');
         }
         
         if (Customer::hasTransactions($id)) {
             Session::flash('error', 'Pelanggan tidak dapat dihapus karena sudah memiliki transaksi');
-            $this->redirect('/customer');
+            $this->redirect('/index.php?url=customer');
         }
         
         Customer::delete($id);
         Session::flash('success', 'Pelanggan berhasil dihapus');
-        $this->redirect('/customer');
+        $this->redirect('/index.php?url=customer');
     }
     
     /**

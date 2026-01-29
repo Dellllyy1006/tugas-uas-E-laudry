@@ -3,11 +3,11 @@
     <div class="card-body py-2">
         <div class="d-flex flex-wrap align-items-center">
             <span class="mr-3">Filter Status:</span>
-            <a href="<?= BASE_URL ?>/transaction" class="btn btn-sm <?= empty($currentStatus) ? 'btn-primary' : 'btn-outline-secondary' ?> mr-2 mb-1">
+            <a href="<?= BASE_URL ?>/index.php?url=transaction" class="btn btn-sm <?= empty($currentStatus) ? 'btn-primary' : 'btn-outline-secondary' ?> mr-2 mb-1">
                 Semua
             </a>
             <?php foreach ($statuses as $status => $config): ?>
-            <a href="<?= BASE_URL ?>/transaction?status=<?= $status ?>" class="btn btn-sm <?= $currentStatus === $status ? 'btn-' . $config['color'] : 'btn-outline-' . $config['color'] ?> mr-2 mb-1">
+            <a href="<?= BASE_URL ?>/index.php?url=transaction&status=<?= $status ?>" class="btn btn-sm <?= $currentStatus === $status ? 'btn-' . $config['color'] : 'btn-outline-' . $config['color'] ?> mr-2 mb-1">
                 <i class="fas <?= $config['icon'] ?> mr-1"></i>
                 <?= $config['label'] ?>
             </a>
@@ -20,7 +20,7 @@
     <div class="card-header">
         <h3 class="card-title">Daftar Transaksi</h3>
         <div class="card-tools">
-            <a href="<?= BASE_URL ?>/transaction/create" class="btn btn-primary btn-sm">
+            <a href="<?= BASE_URL ?>/index.php?url=transaction/create" class="btn btn-primary btn-sm">
                 <i class="fas fa-plus mr-1"></i> Transaksi Baru
             </a>
         </div>
@@ -64,14 +64,14 @@
                         <?php endif; ?>
                     </td>
                     <td>
-                        <a href="<?= BASE_URL ?>/transaction/show/<?= $trx['id'] ?>" class="btn btn-sm btn-info" title="Detail">
+                        <a href="<?= BASE_URL ?>/index.php?url=transaction/show/<?= $trx['id'] ?>" class="btn btn-sm btn-info" title="Detail">
                             <i class="fas fa-eye"></i>
                         </a>
-                        <a href="<?= BASE_URL ?>/transaction/print/<?= $trx['id'] ?>" class="btn btn-sm btn-secondary" title="Cetak" target="_blank">
+                        <a href="<?= BASE_URL ?>/index.php?url=transaction/print/<?= $trx['id'] ?>" class="btn btn-sm btn-secondary" title="Cetak" target="_blank">
                             <i class="fas fa-print"></i>
                         </a>
                         <?php if ($trx['status'] !== 'selesai'): ?>
-                        <a href="<?= BASE_URL ?>/transaction/next/<?= $trx['id'] ?>" class="btn btn-sm btn-success" title="Lanjut Status">
+                        <a href="<?= BASE_URL ?>/index.php?url=transaction/next/<?= $trx['id'] ?>" class="btn btn-sm btn-success" title="Lanjut Status">
                             <i class="fas fa-arrow-right"></i>
                         </a>
                         <?php endif; ?>

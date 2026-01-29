@@ -61,8 +61,32 @@ class App
      */
     protected function parseUrl(): array
     {
-        $url = $_GET['url'] ?? '';
+        if (isset($_GET['url'])) {
+            $url = $_GET['url'];
+        } else {
+            // Fallback: Parse REQUEST_URI directly
+            $requestUri = $_SERVER['REQUEST_URI'];
+            $scriptName = $_SERVER['SCRIPT_NAME']; // e.g. /sub/index.php
+            $scriptDir = str_replace('\\', '/', dirname($scriptName)); // e.g. /sub
+            
+            // Remove script dir from URI to get the relative path
+            if ($scriptDir !== '/' && strpos($requestUri, $scriptDir) === 0) {
+                $url = substr($requestUri, strlen($scriptDir));
+            } else {
+                $url = $requestUri;
+            }
+            
+            // Remove index.php if present at the start
+            $url = preg_replace('/^\/?index\.php/', '', $url);
+            
+            // Remove query string
+            if (($pos = strpos($url, '?')) !== false) {
+                $url = substr($url, 0, $pos);
+            }
+        }
+        
         $url = rtrim($url, '/');
+        $url = ltrim($url, '/'); // Ensure no leading slash
         $url = filter_var($url, FILTER_SANITIZE_URL);
         return explode('/', $url);
     }

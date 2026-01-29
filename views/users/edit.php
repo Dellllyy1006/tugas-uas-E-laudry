@@ -4,7 +4,7 @@
             <div class="card-header">
                 <h3 class="card-title">Edit User</h3>
             </div>
-            <form action="<?= BASE_URL ?>/user/update/<?= $user['id'] ?>" method="post">
+            <form action="<?= BASE_URL ?>/index.php?url=user/update/<?= $user['id'] ?>" method="post">
                 <input type="hidden" name="csrf_token" value="<?= $csrf_token ?>">
                 
                 <div class="card-body">
@@ -44,7 +44,7 @@
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-save mr-1"></i> Update
                     </button>
-                    <a href="<?= BASE_URL ?>/user" class="btn btn-secondary">
+                    <a href="<?= BASE_URL ?>/index.php?url=user" class="btn btn-secondary">
                         <i class="fas fa-arrow-left mr-1"></i> Kembali
                     </a>
                 </div>

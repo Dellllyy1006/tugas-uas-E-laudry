@@ -2,7 +2,7 @@
     <div class="card-header">
         <h3 class="card-title">Daftar Kode Promo</h3>
         <div class="card-tools">
-            <a href="<?= BASE_URL ?>/promo/create" class="btn btn-primary btn-sm">
+            <a href="<?= BASE_URL ?>/index.php?url=promo/create" class="btn btn-primary btn-sm">
                 <i class="fas fa-plus mr-1"></i> Tambah Promo
             </a>
         </div>
@@ -59,10 +59,10 @@
                         <?php endif; ?>
                     </td>
                     <td>
-                        <a href="<?= BASE_URL ?>/promo/edit/<?= $promo['id'] ?>" class="btn btn-sm btn-warning" title="Edit">
+                        <a href="<?= BASE_URL ?>/index.php?url=promo/edit/<?= $promo['id'] ?>" class="btn btn-sm btn-warning" title="Edit">
                             <i class="fas fa-edit"></i>
                         </a>
-                        <a href="<?= BASE_URL ?>/promo/delete/<?= $promo['id'] ?>" class="btn btn-sm btn-danger btn-delete" title="Hapus">
+                        <a href="<?= BASE_URL ?>/index.php?url=promo/delete/<?= $promo['id'] ?>" class="btn btn-sm btn-danger btn-delete" title="Hapus">
                             <i class="fas fa-trash"></i>
                         </a>
                     </td>

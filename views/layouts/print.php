@@ -200,7 +200,7 @@
         <i class="fas fa-print"></i> Cetak Nota
     </button>
     
-    <a href="<?= BASE_URL ?>/transaction/show/<?= $transaction['id'] ?>" class="btn-back no-print">
+    <a href="<?= BASE_URL ?>/index.php?url=transaction/show/<?= $transaction['id'] ?>" class="btn-back no-print">
         &larr; Kembali ke Detail
     </a>
     

@@ -1,4 +1,4 @@
-<form action="<?= BASE_URL ?>/transaction/store" method="post" id="transactionForm">
+<form action="<?= BASE_URL ?>/index.php?url=transaction/store" method="post" id="transactionForm">
     <input type="hidden" name="csrf_token" value="<?= $csrf_token ?>">
     
     <div class="row">
@@ -154,7 +154,7 @@
                     <hr>
                     
                     <div class="text-right">
-                        <a href="<?= BASE_URL ?>/transaction" class="btn btn-secondary mr-2">
+                        <a href="<?= BASE_URL ?>/index.php?url=transaction" class="btn btn-secondary mr-2">
                             <i class="fas fa-arrow-left mr-1"></i> Batal
                         </a>
                         <button type="submit" class="btn btn-primary btn-lg">
@@ -234,7 +234,7 @@ $(document).ready(function() {
         
         var subtotal = calculateSubtotal();
         
-        $.get('<?= BASE_URL ?>/promo/validate', { code: code, subtotal: subtotal }, function(response) {
+        $.get('<?= BASE_URL ?>/index.php?url=promo/validate', { code: code, subtotal: subtotal }, function(response) {
             if (response.success) {
                 $('#promoResult').html('<small class="text-success"><i class="fas fa-check-circle"></i> ' + response.promo.name + ' - ' + response.discount_formatted + '</small>');
                 discount = response.discount;

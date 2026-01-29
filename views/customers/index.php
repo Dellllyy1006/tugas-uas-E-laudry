@@ -2,7 +2,7 @@
     <div class="card-header">
         <h3 class="card-title">Daftar Pelanggan</h3>
         <div class="card-tools">
-            <a href="<?= BASE_URL ?>/customer/create" class="btn btn-primary btn-sm">
+            <a href="<?= BASE_URL ?>/index.php?url=customer/create" class="btn btn-primary btn-sm">
                 <i class="fas fa-plus mr-1"></i> Tambah Pelanggan
             </a>
         </div>
@@ -34,10 +34,10 @@
                     <td><?= htmlspecialchars($customer['address'] ?? '-') ?></td>
                     <td><?= date('d/m/Y', strtotime($customer['created_at'])) ?></td>
                     <td>
-                        <a href="<?= BASE_URL ?>/customer/edit/<?= $customer['id'] ?>" class="btn btn-sm btn-warning" title="Edit">
+                        <a href="<?= BASE_URL ?>/index.php?url=customer/edit/<?= $customer['id'] ?>" class="btn btn-sm btn-warning" title="Edit">
                             <i class="fas fa-edit"></i>
                         </a>
-                        <a href="<?= BASE_URL ?>/customer/delete/<?= $customer['id'] ?>" class="btn btn-sm btn-danger btn-delete" title="Hapus">
+                        <a href="<?= BASE_URL ?>/index.php?url=customer/delete/<?= $customer['id'] ?>" class="btn btn-sm btn-danger btn-delete" title="Hapus">
                             <i class="fas fa-trash"></i>
                         </a>
                     </td>

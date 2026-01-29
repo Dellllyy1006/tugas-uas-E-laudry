@@ -247,10 +247,10 @@
     <!-- Navbar -->
     <nav class="navbar navbar-dark">
         <div class="container">
-            <a class="navbar-brand text-white" href="<?= BASE_URL ?>/tracking">
+            <a class="navbar-brand text-white" href="<?= BASE_URL ?>/index.php?url=tracking">
                 <i class="fas fa-tshirt me-2"></i>Laundry Tunas Bangsa
             </a>
-            <a href="<?= BASE_URL ?>/auth/login" class="btn btn-outline-light btn-sm">
+            <a href="<?= BASE_URL ?>/index.php?url=auth/login" class="btn btn-outline-light btn-sm">
                 <i class="fas fa-sign-in-alt me-1"></i> Login Staff
             </a>
         </div>
