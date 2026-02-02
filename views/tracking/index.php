@@ -28,8 +28,7 @@
                 endif;
                 ?>
                 
-                <form action="<?= BASE_URL ?>/index.php" method="get">
-                    <input type="hidden" name="url" value="tracking/search">
+                <form action="<?= Controller::url('tracking/search') ?>" method="post">
                     <div class="row g-3">
                         <div class="col-md-9">
                             <input type="text" class="form-control form-control-lg" name="code" placeholder="Masukkan kode invoice (contoh: INV-20260126-0001)" required autofocus>

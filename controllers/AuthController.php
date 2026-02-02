@@ -13,7 +13,7 @@ class AuthController extends Controller
     public function login(): void
     {
         if (Session::isLoggedIn()) {
-            $this->redirect('/index.php?url=dashboard');
+            $this->redirect('dashboard');
         }
         
         $this->setTitle('Login');
@@ -27,7 +27,7 @@ class AuthController extends Controller
     public function authenticate(): void
     {
         if (!$this->isPost()) {
-            $this->redirect('/index.php?url=auth/login');
+            $this->redirect('auth/login');
         }
         
         $username = $this->sanitize($this->post('username', ''));
@@ -35,7 +35,7 @@ class AuthController extends Controller
         
         if (empty($username) || empty($password)) {
             Session::flash('error', 'Username dan password harus diisi');
-            $this->redirect('/index.php?url=auth/login');
+            $this->redirect('auth/login');
         }
         
         $user = User::authenticate($username, $password);
@@ -43,10 +43,10 @@ class AuthController extends Controller
         if ($user) {
             Session::login($user);
             Session::flash('success', 'Selamat datang, ' . $user['name']);
-            $this->redirect('/index.php?url=dashboard');
+            $this->redirect('dashboard');
         } else {
             Session::flash('error', 'Username atau password salah');
-            $this->redirect('/index.php?url=auth/login');
+            $this->redirect('auth/login');
         }
     }
     
@@ -57,6 +57,6 @@ class AuthController extends Controller
     {
         Session::logout();
         Session::flash('success', 'Anda telah keluar dari sistem');
-        $this->redirect('/index.php?url=auth/login');
+        $this->redirect('auth/login');
     }
 }

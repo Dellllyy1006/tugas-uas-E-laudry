@@ -45,7 +45,7 @@ class PackageController extends Controller
     public function store(): void
     {
         if (!$this->isPost()) {
-            $this->redirect('/index.php?url=package');
+            $this->redirect('package');
         }
         
         $data = [
@@ -58,12 +58,12 @@ class PackageController extends Controller
         
         if (empty($data['name']) || $data['price'] <= 0) {
             Session::flash('error', 'Nama dan harga harus diisi dengan benar');
-            $this->redirect('/index.php?url=package/create');
+            $this->redirect('package/create');
         }
         
         Package::create($data);
         Session::flash('success', 'Paket berhasil ditambahkan');
-        $this->redirect('/index.php?url=package');
+        $this->redirect('package');
     }
     
     /**
@@ -74,7 +74,7 @@ class PackageController extends Controller
         $package = Package::find($id);
         if (!$package) {
             Session::flash('error', 'Paket tidak ditemukan');
-            $this->redirect('/index.php?url=package');
+            $this->redirect('package');
         }
         
         $this->setTitle('Edit Paket');
@@ -92,13 +92,13 @@ class PackageController extends Controller
     public function update(int $id): void
     {
         if (!$this->isPost()) {
-            $this->redirect('/index.php?url=package');
+            $this->redirect('package');
         }
         
         $package = Package::find($id);
         if (!$package) {
             Session::flash('error', 'Paket tidak ditemukan');
-            $this->redirect('/index.php?url=package');
+            $this->redirect('package');
         }
         
         $data = [
@@ -111,12 +111,12 @@ class PackageController extends Controller
         
         if (empty($data['name']) || $data['price'] <= 0) {
             Session::flash('error', 'Nama dan harga harus diisi dengan benar');
-            $this->redirect('/index.php?url=package/edit/' . $id);
+            $this->redirect('package/edit/' . $id);
         }
         
         Package::update($id, $data);
         Session::flash('success', 'Paket berhasil diupdate');
-        $this->redirect('/index.php?url=package');
+        $this->redirect('package');
     }
     
     /**
@@ -127,17 +127,17 @@ class PackageController extends Controller
         $package = Package::find($id);
         if (!$package) {
             Session::flash('error', 'Paket tidak ditemukan');
-            $this->redirect('/index.php?url=package');
+            $this->redirect('package');
         }
         
         if (Package::hasTransactions($id)) {
             Session::flash('error', 'Paket tidak dapat dihapus karena sudah digunakan dalam transaksi');
-            $this->redirect('/index.php?url=package');
+            $this->redirect('package');
         }
         
         Package::delete($id);
         Session::flash('success', 'Paket berhasil dihapus');
-        $this->redirect('/index.php?url=package');
+        $this->redirect('package');
     }
     
     /**
@@ -151,7 +151,7 @@ class PackageController extends Controller
                 $this->json(['success' => false, 'message' => 'Paket tidak ditemukan']);
             }
             Session::flash('error', 'Paket tidak ditemukan');
-            $this->redirect('/index.php?url=package');
+            $this->redirect('package');
         }
         
         Package::toggleActive($id);
@@ -161,6 +161,6 @@ class PackageController extends Controller
         }
         
         Session::flash('success', 'Status paket berhasil diubah');
-        $this->redirect('/index.php?url=package');
+        $this->redirect('package');
     }
 }

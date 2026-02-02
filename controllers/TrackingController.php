@@ -28,7 +28,7 @@ class TrackingController extends Controller
                 $this->json(['success' => false, 'message' => 'Masukkan kode resi']);
             }
             Session::flash('error', 'Masukkan kode resi');
-            $this->redirect('/index.php?url=tracking');
+            $this->redirect('tracking');
         }
         
         $transaction = Transaction::findByInvoice($invoiceCode);
@@ -38,7 +38,7 @@ class TrackingController extends Controller
                 $this->json(['success' => false, 'message' => 'Transaksi tidak ditemukan']);
             }
             Session::flash('error', 'Transaksi tidak ditemukan');
-            $this->redirect('/index.php?url=tracking');
+            $this->redirect('tracking');
         }
         
         $items = Transaction::getItems($transaction['id']);

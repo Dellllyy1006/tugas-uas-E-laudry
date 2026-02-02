@@ -15,14 +15,16 @@ ini_set('display_errors', '1');
 // Define base path
 define('BASE_PATH', __DIR__);
 
-// Helper to detect base url
+// Helper to detect base url with full protocol and host
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
 $scriptName = str_replace('\\', '/', $_SERVER['SCRIPT_NAME']);
 $dirName = dirname($scriptName);
 if ($dirName === '/' || $dirName === '.') {
     $dirName = '';
 }
 $dirName = rtrim($dirName, '/');
-define('BASE_URL', $dirName);
+define('BASE_URL', $protocol . '://' . $host . $dirName);
 
 // Autoloader
 spl_autoload_register(function ($class) {

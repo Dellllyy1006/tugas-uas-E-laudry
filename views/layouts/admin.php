@@ -279,7 +279,7 @@
                         <small><?= ucfirst(Session::get('user_role', '')) ?></small>
                     </span>
                     <div class="dropdown-divider"></div>
-                    <a href="<?= BASE_URL ?>/index.php?url=auth/logout" class="dropdown-item text-danger">
+                    <a href="<?= Controller::url('auth/logout') ?>" class="dropdown-item text-danger">
                         <i class="fas fa-sign-out-alt mr-2"></i> Logout
                     </a>
                 </div>
@@ -290,7 +290,7 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="<?= BASE_URL ?>/index.php?url=dashboard" class="brand-link text-center">
+        <a href="<?= Controller::url('dashboard') ?>" class="brand-link text-center">
             <span class="brand-text font-weight-bold">
                 <i class="fas fa-tshirt mr-2"></i>Laundry Tunas Bangsa
             </span>
@@ -302,7 +302,7 @@
             <nav class="mt-3">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu">
                     <li class="nav-item">
-                        <a href="<?= BASE_URL ?>/index.php?url=dashboard" class="nav-link <?= ($activeMenu ?? '') === 'dashboard' ? 'active' : '' ?>">
+                        <a href="<?= Controller::url('dashboard') ?>" class="nav-link <?= ($activeMenu ?? '') === 'dashboard' ? 'active' : '' ?>">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>Dashboard</p>
                         </a>
@@ -310,13 +310,13 @@
                     
                     <li class="nav-header">TRANSAKSI</li>
                     <li class="nav-item">
-                        <a href="<?= BASE_URL ?>/index.php?url=transaction/create" class="nav-link <?= ($activeMenu ?? '') === 'transaction-create' ? 'active' : '' ?>">
+                        <a href="<?= Controller::url('transaction/create') ?>" class="nav-link <?= ($activeMenu ?? '') === 'transaction-create' ? 'active' : '' ?>">
                             <i class="nav-icon fas fa-plus-circle"></i>
                             <p>Transaksi Baru</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= BASE_URL ?>/index.php?url=transaction" class="nav-link <?= ($activeMenu ?? '') === 'transactions' ? 'active' : '' ?>">
+                        <a href="<?= Controller::url('transaction') ?>" class="nav-link <?= ($activeMenu ?? '') === 'transactions' ? 'active' : '' ?>">
                             <i class="nav-icon fas fa-receipt"></i>
                             <p>Daftar Transaksi</p>
                         </a>
@@ -324,19 +324,19 @@
                     
                     <li class="nav-header">MASTER DATA</li>
                     <li class="nav-item">
-                        <a href="<?= BASE_URL ?>/index.php?url=package" class="nav-link <?= ($activeMenu ?? '') === 'packages' ? 'active' : '' ?>">
+                        <a href="<?= Controller::url('package') ?>" class="nav-link <?= ($activeMenu ?? '') === 'packages' ? 'active' : '' ?>">
                             <i class="nav-icon fas fa-box"></i>
                             <p>Data Paket</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= BASE_URL ?>/index.php?url=customer" class="nav-link <?= ($activeMenu ?? '') === 'customers' ? 'active' : '' ?>">
+                        <a href="<?= Controller::url('customer') ?>" class="nav-link <?= ($activeMenu ?? '') === 'customers' ? 'active' : '' ?>">
                             <i class="nav-icon fas fa-users"></i>
                             <p>Data Pelanggan</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?= BASE_URL ?>/index.php?url=promo" class="nav-link <?= ($activeMenu ?? '') === 'promos' ? 'active' : '' ?>">
+                        <a href="<?= Controller::url('promo') ?>" class="nav-link <?= ($activeMenu ?? '') === 'promos' ? 'active' : '' ?>">
                             <i class="nav-icon fas fa-tags"></i>
                             <p>Kode Promo</p>
                         </a>
@@ -345,7 +345,7 @@
                     <?php if (Session::isAdmin()): ?>
                     <li class="nav-header">PENGATURAN</li>
                     <li class="nav-item">
-                        <a href="<?= BASE_URL ?>/index.php?url=user" class="nav-link <?= ($activeMenu ?? '') === 'users' ? 'active' : '' ?>">
+                        <a href="<?= Controller::url('user') ?>" class="nav-link <?= ($activeMenu ?? '') === 'users' ? 'active' : '' ?>">
                             <i class="nav-icon fas fa-user-cog"></i>
                             <p>Manajemen User</p>
                         </a>
@@ -354,7 +354,7 @@
                     
                     <li class="nav-header">LAINNYA</li>
                     <li class="nav-item">
-                        <a href="<?= BASE_URL ?>/index.php?url=tracking" class="nav-link" target="_blank">
+                        <a href="<?= Controller::url('tracking') ?>" class="nav-link" target="_blank">
                             <i class="nav-icon fas fa-search"></i>
                             <p>Lacak Laundry <i class="fas fa-external-link-alt ml-1 small"></i></p>
                         </a>

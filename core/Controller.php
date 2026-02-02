@@ -54,8 +54,21 @@ class Controller
      */
     protected function redirect(string $url): void
     {
-        header('Location: ' . BASE_URL . $url);
+        header('Location: ' . self::url($url));
         exit;
+    }
+    
+    /**
+     * Generate URL with proper base path
+     * Usage: Controller::url('auth/login') => /uas_kel7_database/index.php?url=auth/login
+     */
+    public static function url(string $path = ''): string
+    {
+        $path = ltrim($path, '/');
+        if (empty($path)) {
+            return BASE_URL . '/index.php';
+        }
+        return BASE_URL . '/index.php?url=' . $path;
     }
     
     /**
@@ -109,7 +122,7 @@ class Controller
     {
         if (!Session::isLoggedIn()) {
             Session::flash('error', 'Silakan login terlebih dahulu');
-            $this->redirect('/index.php?url=auth/login');
+            $this->redirect('auth/login');
         }
     }
     
@@ -121,7 +134,7 @@ class Controller
         $this->requireLogin();
         if (!Session::isAdmin()) {
             Session::flash('error', 'Anda tidak memiliki akses ke halaman ini');
-            $this->redirect('/index.php?url=dashboard');
+            $this->redirect('dashboard');
         }
     }
     

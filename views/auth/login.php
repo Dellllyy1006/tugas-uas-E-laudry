@@ -1,6 +1,6 @@
 <p class="login-box-msg">Masuk ke Sistem Laundry Tunas Bangsa</p>
 
-<form action="<?= BASE_URL ?>/index.php?url=auth/authenticate" method="post">
+<form action="<?= Controller::url('auth/authenticate') ?>" method="post">
     <input type="hidden" name="csrf_token" value="<?= $csrf_token ?>">
     
     <div class="input-group mb-3">
@@ -26,7 +26,7 @@
             <button type="submit" class="btn btn-primary btn-block">
                 <i class="fas fa-sign-in-alt mr-2"></i> Masuk
             </button>
-            <a href="<?= BASE_URL ?>/index.php?url=tracking" target="_blank" class="btn btn-outline-info btn-block mt-2">
+            <a href="<?= Controller::url('tracking') ?>" target="_blank" class="btn btn-outline-info btn-block mt-2">
                 <i class="fas fa-search mr-2"></i>
                 Lacak Laundry
             </a>
@@ -34,8 +34,3 @@
     </div>
 </form>
 
-<div class="mt-4 text-center">
-    <a href="<?= BASE_URL ?>/index.php?url=tracking" class="text-muted">
-        <i class="fas fa-search mr-1"></i> Lacak Status Laundry
-    </a>
-</div>
